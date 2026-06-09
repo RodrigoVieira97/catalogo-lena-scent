@@ -236,7 +236,7 @@ footer{text-align:center;padding:28px 20px 86px;background:var(--card);border-to
   <p>A planilha precisa estar publicada publicamente.<br><br>
   No Google Sheets: <b>Arquivo → Compartilhar → Publicar na Web → CSV → Publicar</b><br><br>
   Se já publicou, verifique se o ID está correto:<br>
-  <code>12kptadRIEzPRcoJpBuTwZ2TLfYkjqNfzYEEVI0kGUr0</code></p>
+  <code>2PACX-1vTi6kLv59WTIT6yJWthslc_Q9On5g3P5acctjKQv7XY9CPa-ZH-5QMc0_4N39lm_vxJh3-spfKLMtO-</code></p>
   <button class="btn pr" onclick="loadSheet()" style="margin-top:8px">Tentar novamente</button>
 </div>
 
@@ -329,23 +329,22 @@ footer{text-align:center;padding:28px 20px 86px;background:var(--card);border-to
 
 <script>
 // ── CONFIGURAÇÃO ──────────────────────────────────────────────
-const SHEET_ID  = '12kptadRIEzPRcoJpBuTwZ2TLfYkjqNfzYEEVI0kGUr0';
+const SHEET_ID  = '2PACX-1vTi6kLv59WTIT6yJWthslc_Q9On5g3P5acctjKQv7XY9CPa-ZH-5QMc0_4N39lm_vxJh3-spfKLMtO-';
 const WA_BASE   = 'https://api.whatsapp.com/send/?phone=5554992046077&type=phone_number&app_absent=0&text=';
 
 // Colunas da planilha (0-indexed) — ajuste se mudar a ordem
 const COL = {
-  num:       0,
-  brand:     1,
-  name:      2,
-  gender:    3,
-  type:      4,
-  active:    5,
-  size:      6,
-  price:     7,
-  status:    8,
-  fragId:    9,
-  imgFrasco: 10,
-  urlNotas:  11,
+  num:       0,   // A
+  brand:     1,   // B
+  name:      2,   // C
+  gender:    3,   // D
+  type:      4,   // E
+  fragId:    5,   // F
+  imgFrasco: 6,   // G
+  urlNotas:  7,   // H
+  active:    8,   // I
+  size:      9,   // J
+  price:     10,  // K
 };
 
 // Cores dos badges
@@ -385,8 +384,8 @@ async function loadSheet() {
 
   // Tenta CSV público primeiro, depois o proxy CORS
   const urls = [
-    `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`,
-    `https://corsproxy.io/?url=https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`
+    `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`,
+    `https://corsproxy.io/?url=https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`
   ];
 
   let rows = null;
