@@ -429,7 +429,12 @@ async function loadSheet() {
         name:      (r[COL.name]      || '').trim(),
         gender:    (r[COL.gender]    || 'U').trim().toUpperCase(),
         type:      (r[COL.type]      || 'Importado').trim(),
-        imgFrasco: (r[COL.imgFrasco] || '').trim(),
+        imgFrasco: (function(v) {
+          v = (v || '').trim();
+          if (!v) return '';
+          if (v.startsWith('http')) return v;
+          return 'https://acdn-us.mitiendanube.com/stores/002/829/826/products/' + v;
+        })(r[COL.imgFrasco]),
         urlNotas:  (r[COL.urlNotas]  || '').trim(),
         fragId:    (r[COL.fragId]    || '').trim(),
         sizes:     []
