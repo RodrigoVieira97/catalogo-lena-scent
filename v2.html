@@ -416,7 +416,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const fmt=v=>'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2});
 function parsePrice(s){if(s==null)return null;s=String(s).replace(/r\$/i,'').replace(/\s/g,'');if(!s)return null;if(s.indexOf(',')>-1)s=s.replace(/\./g,'').replace(',','.');const v=parseFloat(s);return isNaN(v)?null:v;}
-function photoUrl(raw){raw=(raw||'').trim();if(!raw)return '';if(/^https?:\/\//i.test(raw))return raw;return TABS_CDN+raw;}
+function photoUrl(raw){raw=(raw||'').trim();if(!raw)return '';if(/^https?:\/\//i.test(raw))return raw;if(raw.indexOf('/')>-1)return raw;return TABS_CDN+raw;}
 function notesUrl(h,id){h=(h||'').trim();if(/^https?:\/\//i.test(h))return h;id=String(id||'').trim();if(id&&/^\d+$/.test(id))return 'https://fimgs.net/mdimg/perfume-social-cards/pt-p_c_'+id+'.jpeg';return '';}
 function normGen(g){g=String(g||'').trim().toUpperCase();if(g.startsWith('M'))return 'M';if(g.startsWith('F'))return 'F';return 'U';}
 function normFam(t){t=String(t||'').trim();const l=t.toLowerCase();if(l.startsWith('ár')||l.startsWith('ar'))return 'Árabe';if(l.startsWith('import'))return 'Importado';if(l.startsWith('nac'))return 'Nacional';if(l.startsWith('dec'))return 'Decant';return t||'Importado';}
